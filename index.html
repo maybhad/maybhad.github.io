@@ -3,620 +3,781 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Poster Tuyển Dụng Ultra Modern - Công ty CP May BHAD</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            overflow: hidden;
-        }
-        
-        .poster-container {
-            width: 850px;
-            height: 1200px;
-            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
-            border-radius: 25px;
-            box-shadow: 
-                0 40px 80px rgba(0, 90, 156, 0.3),
-                0 20px 40px rgba(0, 0, 0, 0.1),
-                inset 0 2px 0 rgba(255, 255, 255, 0.8);
-            position: relative;
-            overflow: hidden;
-            border: 3px solid rgba(255, 255, 255, 0.8);
-        }
-        
-        .floating-shapes {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-        
-        .floating-shape {
-            position: absolute;
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        .shape-1 {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(45deg, #4FC3F7, #29B6F6);
-            top: 10%;
-            left: -40px;
-            animation-delay: 0s;
-            opacity: 0.6;
-        }
-        
-        .shape-2 {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(45deg, #FF7043, #FF5722);
-            top: 25%;
-            right: -30px;
-            animation-delay: 2s;
-            opacity: 0.5;
-        }
-        
-        .shape-3 {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(45deg, #8E24AA, #9C27B0);
-            bottom: 30%;
-            left: -20px;
-            animation-delay: 4s;
-            opacity: 0.4;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
-        }
-        
-        .poster-content {
-            position: relative;
-            z-index: 2;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .header-section {
-            background: linear-gradient(135deg, #005A9C 0%, #0088cc 50%, #2196F3 100%);
-            color: white;
-            padding: 35px 40px 25px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .header-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            opacity: 0.3;
-        }
-        
-        .header-top {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 25px;
-            position: relative;
-            z-index: 3;
-        }
-        
-        .company-section {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        
-        .company-logo {
-            width: 65px;
-            height: 65px;
-            background: linear-gradient(135deg, #FF7043 0%, #FF5722 100%);
-            border-radius: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-            font-weight: 900;
-            color: white;
-            box-shadow: 0 8px 20px rgba(255, 112, 67, 0.4);
-            transform: rotate(-5deg);
-            transition: transform 0.3s ease;
-        }
-        
-        .company-logo:hover {
-            transform: rotate(0deg) scale(1.05);
-        }
-        
-        .company-info h1 {
-            font-size: 18px;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 5px;
-            letter-spacing: 0.5px;
-        }
-        
-        .company-info p {
-            font-size: 13px;
-            font-weight: 500;
-            color: #4FC3F7;
-            letter-spacing: 0.3px;
-        }
-        
-        .contact-card {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 15px;
-            padding: 18px 25px;
-            text-align: right;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
-        
-        .contact-card p {
-            font-size: 11px;
-            font-weight: 600;
-            margin-bottom: 5px;
-            opacity: 0.9;
-        }
-        
-        .contact-card strong {
-            font-size: 16px;
-            font-weight: 800;
-            color: #FFC400;
-            letter-spacing: 0.5px;
-        }
-        
-        .urgent-badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, #FF7043, #FF5722);
-            color: white;
-            padding: 12px 20px;
-            border-radius: 25px;
-            font-size: 11px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 6px 20px rgba(255, 87, 34, 0.5);
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-        
-        .hero-section {
-            padding: 45px 40px 35px;
-            text-align: center;
-            background: 
-                linear-gradient(135deg, transparent 0%, rgba(79, 195, 247, 0.03) 100%),
-                linear-gradient(135deg, #E3F2FD 0%, #F3E5F5 100%);
-            position: relative;
-        }
-        
-        .hero-title {
-            font-size: 48px;
-            font-weight: 900;
-            background: linear-gradient(135deg, #005A9C, #8E24AA);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 15px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            position: relative;
-        }
-        
-        .hero-title::after {
-            content: '';
-            display: block;
-            width: 120px;
-            height: 6px;
-            background: linear-gradient(135deg, #FF7043, #FFC400);
-            margin: 15px auto;
-            border-radius: 3px;
-            box-shadow: 0 4px 15px rgba(255, 112, 67, 0.3);
-        }
-        
-        .job-card {
-            background: rgba(255, 255, 255, 0.9);
-            border: 2px solid #E3F2FD;
-            border-radius: 20px;
-            padding: 25px 30px;
-            margin: 20px auto;
-            max-width: 500px;
-            box-shadow: 
-                0 20px 40px rgba(0, 90, 156, 0.1),
-                0 10px 20px rgba(0, 0, 0, 0.05);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-        
-        .job-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 
-                0 30px 60px rgba(0, 90, 156, 0.15),
-                0 15px 30px rgba(0, 0, 0, 0.08);
-        }
-        
-        .job-title {
-            font-size: 26px;
-            font-weight: 800;
-            color: #005A9C;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-        }
-        
-        .vacancy-count {
-            display: inline-block;
-            background: linear-gradient(135deg, #FFE0B2, #FF8A65);
-            color: #E65100;
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-        
-        .content-section {
-            padding: 0 40px 40px;
-            flex: 1;
-            display: flex;
-            gap: 30px;
-        }
-        
-        .info-card {
-            flex: 1;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 35px;
-            box-shadow: 
-                0 20px 40px rgba(0, 0, 0, 0.08),
-                0 10px 20px rgba(0, 0, 0, 0.04);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .info-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 
-                0 30px 60px rgba(0, 0, 0, 0.12),
-                0 15px 30px rgba(0, 0, 0, 0.06);
-        }
-        
-        .info-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, #005A9C, #4FC3F7, #8E24AA);
-        }
-        
-        .requirements-card::before {
-            background: linear-gradient(90deg, #005A9C, #2196F3);
-        }
-        
-        .benefits-card::before {
-            background: linear-gradient(90deg, #8E24AA, #9C27B0, #E91E63);
-        }
-        
-        .card-title {
-            font-size: 18px;
-            font-weight: 800;
-            color: #005A9C;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .card-icon {
-            width: 30px;
-            height: 30px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            font-weight: bold;
-        }
-        
-        .requirements-card .card-icon {
-            background: linear-gradient(135deg, #E3F2FD, #BBDEFB);
-            color: #005A9C;
-        }
-        
-        .benefits-card .card-icon {
-            background: linear-gradient(135deg, #F3E5F5, #E1BEE7);
-            color: #8E24AA;
-        }
-        
-        .list-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 16px;
-            padding: 12px 0;
-            position: relative;
-        }
-        
-        .list-item::before {
-            content: '';
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            margin-right: 15px;
-            margin-top: 6px;
-            flex-shrink: 0;
-        }
-        
-        .requirements-card .list-item::before {
-            background: linear-gradient(135deg, #4FC3F7, #29B6F6);
-        }
-        
-        .benefits-card .list-item::before {
-            background: linear-gradient(135deg, #FF7043, #FF5722);
-        }
-        
-        .list-item p {
-            font-size: 14px;
-            font-weight: 500;
-            line-height: 1.6;
-            color: #2C3E50;
-        }
-        
-        .salary-highlight {
-            background: linear-gradient(135deg, #FFC400 0%, #FF8F00 100%);
-            color: #1A202C;
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            margin-bottom: 25px;
-            box-shadow: 0 10px 25px rgba(255, 196, 0, 0.3);
-            border: 2px solid #FFD54F;
-        }
-        
-        .salary-label {
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-            opacity: 0.8;
-        }
-        
-        .salary-amount {
-            font-size: 22px;
-            font-weight: 900;
-            letter-spacing: 0.5px;
-        }
-        
-        .footer-section {
-            background: linear-gradient(135deg, #005A9C 0%, #0088cc 50%, #2196F3 100%);
-            color: white;
-            padding: 40px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .footer-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
-        }
-        
-        .cta-card {
-            background: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
-            padding: 25px;
-            margin-bottom: 25px;
-            backdrop-filter: blur(20px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-        }
-        
-        .cta-title {
-            font-size: 18px;
-            font-weight: 800;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-        }
-        
-        .cta-contact {
-            font-size: 20px;
-            font-weight: 900;
-            color: #FFC400;
-            letter-spacing: 0.5px;
-        }
-        
-        .address-section {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            font-size: 12px;
-            opacity: 0.9;
-            margin-bottom: 20px;
-        }
-        
-        .address-icon {
-            color: #4FC3F7;
-        }
-        
-        .company-footer {
-            font-size: 14px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            opacity: 0.9;
-        }
-        
-        .gradient-text {
-            background: linear-gradient(135deg, #4FC3F7, #FFC400);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        @media print {
-            body {
-                background: white;
-                margin: 0;
-                padding: 0;
-            }
-            .poster-container {
-                margin: 0;
-                box-shadow: none;
-                border-radius: 0;
-                width: 210mm;
-                height: 297mm;
-            }
-        }
-        
-        @media (max-width: 900px) {
-            .content-section {
-                flex-direction: column;
-                gap: 20px;
-            }
-            .poster-container {
-                width: 100%;
-                max-width: 850px;
-                height: auto;
-            }
-        }
-    </style>
+    <title>BHAD Garment Joint Stock Company - Nhà sản xuất may mặc chuyên nghiệp</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="i18n.js"></script>
 </head>
 <body>
-    <div class="poster-container">
-        <!-- Floating decorative shapes -->
-        <div class="floating-shapes">
-            <div class="floating-shape shape-1"></div>
-            <div class="floating-shape shape-2"></div>
-            <div class="floating-shape shape-3"></div>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="imgs/bhad-logo.png" alt="BHAD Garment Logo" class="company-logo">
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link" data-key="nav_home">Trang chủ</a></li>
+                    <li><a href="#about" class="nav-link" data-key="nav_about">Về chúng tôi</a></li>
+                    <li><a href="#capacity" class="nav-link" data-key="nav_capacity">Năng lực</a></li>
+                    <li><a href="#production" class="nav-link" data-key="nav_production">Quy trình</a></li>
+                    <li><a href="#quality" class="nav-link" data-key="nav_quality">Chất lượng</a></li>
+                    <li><a href="#management" class="nav-link" data-key="nav_management">Quản lý</a></li>
+                    <li><a href="#equipment" class="nav-link" data-key="nav_equipment">Máy móc</a></li>
+                    <li><a href="#products" class="nav-link" data-key="nav_products">Sản phẩm</a></li>
+                    <li><a href="#certificates" class="nav-link" data-key="nav_certificates">Chứng nhận</a></li>
+                    <li><a href="#contact" class="nav-link" data-key="nav_contact">Liên hệ</a></li>
+                </ul>
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="vi">VI</button>
+                </div>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background-image">
+            <img src="imgs/bhad-factory-entrance.png" alt="BHAD Garment Factory Entrance" />
         </div>
-        
-        <div class="poster-content">
-            <div class="header-section">
-                <div class="urgent-badge">TUYỂN GẤP!</div>
-                
-                <div class="header-top">
-                    <div class="company-section">
-                        <div class="company-logo">BHAD</div>
-                        <div class="company-info">
-                            <h1>CÔNG TY CP MAY BHAD</h1>
-                            <p>QUẢNG HÙNG</p>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>BHAD GARMENT JOINT STOCK COMPANY</h1>
+                <p class="hero-subtitle" data-key="hero_subtitle">Nhà sản xuất may mặc chuyên nghiệp - Chất lượng cao - Đáng tin cậy</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <h3>1.200.000 - 2.000.000</h3>
+                        <p data-key="hero_products_per_year">Sản phẩm/năm</p>
+                    </div>
+                    <div class="stat">
+                        <h3>540</h3>
+                        <p data-key="hero_employees">Nhân viên</p>
+                    </div>
+                    <div class="stat">
+                        <h3>10+</h3>
+                        <p data-key="hero_years_experience">Năm kinh nghiệm</p>
+                    </div>
+                </div>
+                <button class="cta-button" data-key="hero_learn_more">Tìm hiểu thêm</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-key="about_title">Về chúng tôi</h2>
+                <p data-key="about_subtitle">Từ năm 2011 đến nay, BHAD Garment luôn cam kết mang đến những sản phẩm chất lượng cao nhất</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="card-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 data-key="about_established_title">Thành lập năm 2011</h3>
+                    <p data-key="about_established_desc">Chính thức thành lập ngày 16 tháng 6 năm 2011 tại Thanh Hóa, Việt Nam</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3 data-key="about_mission_title">Sứ mệnh</h3>
+                    <p data-key="about_mission_desc">Tập trung vào trí tuệ và sức mạnh để vượt qua khó khăn, nắm bắt cơ hội, đổi mới nhận thức</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3 data-key="about_values_title">Giá trị cốt lõi</h3>
+                    <p data-key="about_values_desc">Chất lượng trên hết. Uy tín trong phục vụ khách hàng. Sự hài lòng của khách hàng là thành công của doanh nghiệp</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Capacity Section -->
+    <section id="capacity" class="capacity">
+        <div class="capacity-bg-pattern"></div>
+        <div class="container">
+            <div class="section-header">
+                <h2 data-key="capacity_title">Năng lực sản xuất</h2>
+                <p data-key="capacity_subtitle">Cơ sở hạ tầng hiện đại với diện tích 25.000 m² và dây chuyền sản xuất tiên tiến</p>
+            </div>
+            <div class="capacity-showcase">
+                <div class="showcase-image">
+                    <img src="imgs/bhad-factory-floor-qc.jpg" alt="BHAD Garment Factory Floor - Quality Control" />
+                    <div class="image-overlay">
+                        <h4>Kiểm tra chất lượng</h4>
+                        <p>32 nhân viên QC/QA chuyên nghiệp</p>
+                    </div>
+                </div>
+                <div class="showcase-image">
+                    <img src="imgs/bhad-showroom-meeting.jpg" alt="BHAD Garment Showroom and Meeting Room" />
+                    <div class="image-overlay">
+                        <h4>Showroom & Meeting</h4>
+                        <p>Trình bày sản phẩm cho khách hàng</p>
+                    </div>
+                </div>
+            </div>
+            <div class="production-gallery">
+                <div class="production-item">
+                    <img src="imgs/bhad-factory-overview-lines.jpg" alt="Tổng quan nhà máy BHAD với 10 dây chuyền" data-key="img_production_lines" />
+                    <div class="production-overlay">
+                        <h4 data-key="gallery_overview_title">Tổng quan nhà máy</h4>
+                        <p data-key="gallery_overview_desc">10 dây chuyền sản xuất hiện đại với hơn 700 máy móc</p>
+                    </div>
+                </div>
+                <div class="production-item">
+                    <img src="imgs/bhad-showroom-export-center.jpg" alt="Showroom xuất khẩu BHAD" data-key="img_export_center" />
+                    <div class="production-overlay">
+                        <h4 data-key="gallery_export_title">Trung tâm xuất khẩu</h4>
+                        <p data-key="gallery_export_desc">Showroom trưng bày sản phẩm cho khách hàng quốc tế</p>
+                    </div>
+                </div>
+                <div class="production-item">
+                    <img src="imgs/bhad-production-lines-quality.jpg" alt="Kiểm soát chất lượng dây chuyền sản xuất" data-key="img_production_lines" />
+                    <div class="production-overlay">
+                        <h4 data-key="gallery_lines_title">Dây chuyền sản xuất</h4>
+                        <p data-key="gallery_lines_desc">10 dây chuyền với hệ thống kiểm soát chất lượng nghiêm ngặt</p>
+                    </div>
+                </div>
+            </div>
+            <div class="capacity-grid">
+                <div class="capacity-card">
+                    <h3><i class="fas fa-industry"></i> Cơ sở hạ tầng</h3>
+                    <ul>
+                        <li><strong>Tổng diện tích:</strong> 25.000 m²</li>
+                        <li><strong>Nhà máy:</strong> 4.500 m²</li>
+                        <li><strong>Kho hàng 1:</strong> 2.500 m²</li>
+                        <li><strong>Kho hàng 2:</strong> 3.000 m²</li>
+                    </ul>
+                    <div class="capacity-image">
+                        <img src="imgs/bhad-production-floor-3.jpg" alt="BHAD Warehouse with Fabric Information Boards" />
+                    </div>
+                </div>
+                <div class="capacity-card">
+                    <h3><i class="fas fa-chart-line"></i> Sản lượng hàng tháng</h3>
+                    <ul>
+                        <li><strong>Áo thun (T-shirt):</strong> 500.000 chiếc</li>
+                        <li><strong>Quần (Pants):</strong> 180.000 chiếc</li>
+                        <li><strong>Áo khoác Fashionable:</strong> 300.000 chiếc</li>
+                        <li><strong>Áo hoodie:</strong> 220.000 chiếc</li>
+                        <li><strong>Áo khoác Jacket:</strong> 100.000 chiếc</li>
+                        <li><strong>Sản phẩm khác:</strong> 200.000 chiếc</li>
+                    </ul>
+                </div>
+                <div class="capacity-card">
+                    <h3><i class="fas fa-cogs"></i> Máy móc hiện đại</h3>
+                    <ul>
+                        <li><strong>Tổng máy móc:</strong> Hơn 700 máy</li>
+                        <li><strong>Nguồn gốc:</strong> Trung Quốc, Nhật Bản, Đức, Mỹ</li>
+                        <li><strong>Đường chuyền:</strong> 10 dây chuyền</li>
+                        <li><strong>Máy/dây chuyền:</strong> 35-40 máy</li>
+                    </ul>
+                    <div class="equipment-preview">
+                        <img src="imgs/industrial_garment_sewing_machine_production_close_up.jpg" alt="Máy may công nghiệp" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Production Process Section -->
+    <section id="production" class="production-process">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-key="production_title">Quy trình sản xuất</h2>
+                <p data-key="production_subtitle">Từ máy móc hiện đại đến hoàn thiện sản phẩm - Quy trình chuyên nghiệp</p>
+            </div>
+            <div class="process-timeline">
+                <div class="process-step">
+                    <img src="imgs/bhad-production-puma-machine.jpg" alt="Máy CNC tự động PUMA" data-key="img_cnc_machine" />
+                    <h4 data-key="process_cnc_title">Máy CNC tự động</h4>
+                    <p data-key="process_cnc_desc">Công nghệ cao với màn hình điều khiển kỹ thuật số, xử lý vật liệu chính xác</p>
+                </div>
+                <div class="process-step">
+                    <img src="imgs/bhad-production-juck-machine.jpg" alt="Máy may JUCK với tài liệu hướng dẫn" data-key="img_juck_machine" />
+                    <h4 data-key="process_juck_title">Máy may JUCK</h4>
+                    <p data-key="process_juck_desc">Công nhân chuyên nghiệp với tài liệu hướng dẫn chi tiết, đảm bảo chất lượng</p>
+                </div>
+                <div class="process-step">
+                    <img src="imgs/bhad-production-xdy-sport.jpg" alt="Máy may ZOJE - Sản phẩm thể thao" data-key="img_zoje_machine" />
+                    <h4 data-key="process_zoje_title">Máy may ZOJE</h4>
+                    <p data-key="process_zoje_desc">Sản xuất đồ thể thao với logo XDY Sport, độ chính xác cao</p>
+                </div>
+                <div class="process-step">
+                    <img src="imgs/bhad-folding-quality-check.jpg" alt="Gấp và kiểm tra chất lượng sản phẩm" data-key="img_quality_check" />
+                    <h4 data-key="process_quality_title">Kiểm tra & Gấp sản phẩm</h4>
+                    <p data-key="process_quality_desc">Công nhân tỉ mỉ gấp và kiểm tra từng sản phẩm trước khi đóng gói</p>
+                </div>
+                <div class="process-step">
+                    <img src="imgs/bhad-folding-ironing.jpg" alt="Gấp và ủi hoàn thiện" data-key="img_ironing" />
+                    <h4 data-key="process_ironing_title">Hoàn thiện sản phẩm</h4>
+                    <p data-key="process_ironing_desc">Ủi và gấp sản phẩm với nhiều màu sắc khác nhau, sẵn sàng xuất khẩu</p>
+                </div>
+                <div class="process-step">
+                    <img src="imgs/bhad-packaging-area.jpg" alt="Khu vực đóng gói chuyên nghiệp" data-key="img_packaging" />
+                    <h4 data-key="process_packaging_title">Đóng gói chuyên nghiệp</h4>
+                    <p data-key="process_packaging_desc">Đội ngũ đóng gói với nhiều sản phẩm được bọc cẩn thận và phân loại</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quality Control Section -->
+    <section id="quality" class="quality-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-key="quality_title">Kiểm soát chất lượng</h2>
+                <p data-key="quality_subtitle">Hệ thống QC/QA nghiêm ngặt với 32 chuyên viên kinh nghiệm</p>
+            </div>
+            <div class="quality-showcase">
+                <div class="quality-item">
+                    <img src="imgs/bhad-production-lines-quality.jpg" alt="Hệ thống QC với các thùng phân loại" />
+                    <span class="quality-badge">QC System</span>
+                    <div class="quality-content">
+                        <h4>Phân loại chất lượng</h4>
+                        <p>HÀNG KIỂM ĐẠT, HÀNG CHỜ KIỂM, HÀNG KIỂM LỖI với thời gian xử lý 2 giờ</p>
+                    </div>
+                </div>
+                <div class="quality-item">
+                    <img src="imgs/bhad-factory-overview-lines.jpg" alt="Tổng quan QC trong nhà máy" />
+                    <span class="quality-badge">Factory QC</span>
+                    <div class="quality-content">
+                        <h4>Kiểm tra toàn diện</h4>
+                        <p>Kiểm tra ở mọi công đoạn từ cắt, may, đến hoàn thiện sản phẩm</p>
+                    </div>
+                </div>
+                <div class="quality-item">
+                    <img src="imgs/bhad-folding-quality-check.jpg" alt="Kiểm tra chất lượng cuối cùng" />
+                    <span class="quality-badge">Final Check</span>
+                    <div class="quality-content">
+                        <h4>Kiểm tra cuối cùng</h4>
+                        <p>Mọi sản phẩm đều được kiểm tra kỹ lưỡng trước khi đóng gói và xuất khẩu</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <div class="products-bg-image">
+            <img src="imgs/bhad-sample-product.jpg" alt="BHAD Garment Puffer Jacket Production" />
+        </div>
+        <div class="container">
+            <div class="section-header">
+                <h2>Sản phẩm & Khách hàng</h2>
+                <p>Phục vụ các thương hiệu nổi tiếng toàn cầu với chất lượng cao nhất</p>
+            </div>
+            <div class="products-grid">
+                <div class="product-category">
+                    <h3>Danh mục sản phẩm</h3>
+                    <div class="product-list">
+                        <div class="product-item">
+                            <i class="fas fa-tshirt"></i>
+                            <span>Áo thun (T-shirt)</span>
+                        </div>
+                        <div class="product-item">
+                            <i class="fas fa-socks"></i>
+                            <span>Quần (Pants)</span>
+                        </div>
+                        <div class="product-item">
+                            <i class="fas fa-user-tie"></i>
+                            <span>Áo khoác (Jacket)</span>
+                        </div>
+                        <div class="product-item">
+                            <i class="fas fa-vest"></i>
+                            <span>Áo hoodie & Fleece</span>
+                        </div>
+                        <div class="product-item">
+                            <i class="fas fa-cut"></i>
+                            <span>Sản phẩm thời trang khác</span>
                         </div>
                     </div>
-                    
-                    <div class="contact-card">
-                        <p></p>Liên hệ:
-                        <strong>Ms Huyền: 0912.776718</strong>
-                    </div>
                 </div>
-            </div>
-            
-            <div class="hero-section">
-                <h1 class="hero-title"></p>Tuyển Dụng</h1>
-                
-                <div class="job-card">
-                    <h2 class="job-title">KẾ TOÁN TỔNG HỢP</h2>
-                    <div class="vacancy-count">SỐ LƯỢNG: 02 NGƯỜI</div>
-                </div>
-            </div>
-            
-            <div class="content-section">
-                <div class="info-card requirements-card">
-                    <h3 class="card-title">
-                        <span class="card-icon">✓</span>
-                        Yêu Cầu Ứng Viên
-                    </h3>
-                    <div class="list-item">
-                        <p>Thành thạo tin học văn phòng (Excel, Word)</p>
+                <div class="clients">
+                    <h3>Khách hàng chính</h3>
+                    <div class="client-logos">
+                        <div class="client-item">THE NORTH FACE</div>
+                        <div class="client-item">MARC NEW YORK</div>
+                        <div class="client-item">SPYDER</div>
+                        <div class="client-item">MANGO</div>
+                        <div class="client-item">BERSHKA</div>
+                        <div class="client-item">FASHION NOVA</div>
+                        <div class="client-item">ECLIPSE</div>
+                        <div class="client-item">NATIONAL GEOGRAPHIC</div>
                     </div>
-                    <div class="list-item">
-                        <p>Nhanh nhẹn, làm việc cẩn thận, có trách nhiệm</p>
-                    </div>
-                    <div class="list-item">
-                        <p>Ưu tiên có kinh nghiệm làm việc trong ngành may mặc</p>
-                    </div>
-                    <div class="list-item">
-                        <p>Có khả năng làm việc độc lập và theo nhóm</p>
-                    </div>
-                </div>
-                
-                <div class="info-card benefits-card">
-                    <h3 class="card-title">
-                        <span class="card-icon">★</span>
-                        Quyền Lợi & Thu Nhập
-                    </h3>
-                    
-                    <div class="salary-highlight">
-                        <div class="salary-label">Thu nhập</div>
-                        <div class="salary-amount">THỎA THUẬN</div>
-                    </div>
-                    
-                    <div class="list-item">
-                        <p>Môi trường làm việc chuyên nghiệp, năng động</p>
-                    </div>
-                    <div class="list-item">
-                        <p>Đầy đủ các chế độ theo quy định</p>
-                    </div>
-                    <div class="list-item">
-                        <p>Cơ hội phát triển nghề nghiệp</p>
-                    </div>
-                    <div class="list-item">
-                        <p>Chế độ bảo hiểm xã hội đầy đủ</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="footer-section">
-                <div class="cta-card">
-                    <div class="cta-title">NỘP HỒ SƠ NGAY HÔM NAY</div>
-                    <div class="cta-contact">Ms. Huyền: 0912.776718</div>
-                </div>
-                
-                <div class="address-section">
-                    <span class="address-icon">📍</span>
-                    <span>Địa chỉ: Thôn 3, Quảng Hùng, Quảng Lưu, TP Sầm Sơn, Thanh Hóa</span>
-                </div>
-                
-                <div class="company-footer">
-                    <span class="gradient-text">CÔNG TY CP MAY BHAD - QUẢNG HÙNG</span>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section id="certificates" class="certificates">
+        <div class="cert-bg-image">
+            <img src="imgs/garment_manufacturing_quality_control_worker_color_matching.jpg" alt="Kiểm tra chất lượng màu sắc" />
+        </div>
+        <div class="container">
+            <div class="section-header">
+                <h2>Chứng nhận & Giải thưởng</h2>
+                <p>Những chứng nhận uy tín từ các tổ chức quốc tế</p>
+            </div>
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <div class="cert-badge gold">
+                        <i class="fas fa-medal"></i>
+                        <h4>WRAP Gold</h4>
+                    </div>
+                    <p>Chứng nhận vàng về trách nhiệm xã hội doanh nghiệp</p>
+                    <small>Thời hạn: 10/05/2024 - 10/05/2025</small>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-badge orange">
+                        <i class="fas fa-award"></i>
+                        <h4>Intertek WCA</h4>
+                    </div>
+                    <p>Đánh giá điều kiện làm việc với điểm số 95.88%</p>
+                    <small>WCA Assessment #Vie20587-01</small>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-badge green">
+                        <i class="fas fa-leaf"></i>
+                        <h4>SAC Higg</h4>
+                    </div>
+                    <p>Chứng nhận từ Sustainable Apparel Coalition</p>
+                    <small>Higg Facility & Social Module</small>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-badge blue">
+                        <i class="fas fa-recycle"></i>
+                        <h4>ITS-GRS</h4>
+                    </div>
+                    <p>Chuẩn Global Recycled Standard 4.0</p>
+                    <small>Chứng nhận bởi Intertek</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Management Section -->
+    <section id="management" class="management">
+        <div class="management-bg-pattern"></div>
+        <div class="container">
+            <div class="section-header">
+                <h2>Bộ máy quản lý</h2>
+                <p>Đội ngũ lãnh đạo giàu kinh nghiệm và chuyên nghiệp</p>
+            </div>
+            <div class="management-showcase">
+                <div class="management-image">
+                    <img src="imgs/bhad-office-compliance.jpg" alt="BHAD Garment Office - Compliance Room" />
+                    <div class="image-caption">
+                        <h4>Phòng Tuân thủ</h4>
+                        <p>Quản lý chất lượng và chứng nhận quốc tế</p>
+                    </div>
+                </div>
+                <div class="management-image">
+                    <img src="imgs/bhad-factory-floor-qc.jpg" alt="BHAD Garment Quality Control Floor" />
+                    <div class="image-caption">
+                        <h4>Kiểm soát chất lượng</h4>
+                        <p>32 chuyên viên QC/QA kiểm tra nghiêm ngặt</p>
+                    </div>
+                </div>
+            </div>
+            <div class="management-content">
+                <div class="org-chart-container">
+                    <div class="org-level">
+                        <div class="org-box ceo">
+                            <i class="fas fa-user-tie"></i>
+                            <h4>Tổng Giám đốc</h4>
+                            <p>Lãnh đạo tổng thể</p>
+                        </div>
+                    </div>
+                    <div class="org-level">
+                        <div class="org-box">
+                            <i class="fas fa-cogs"></i>
+                            <h4>Phòng Sản xuất</h4>
+                            <p>Quản lý dây chuyền</p>
+                        </div>
+                        <div class="org-box">
+                            <i class="fas fa-chart-line"></i>
+                            <h4>Phòng Kinh doanh</h4>
+                            <p>Phát triển thị trường</p>
+                        </div>
+                        <div class="org-box">
+                            <i class="fas fa-award"></i>
+                            <h4>Phòng QA/QC</h4>
+                            <p>Kiểm soát chất lượng</p>
+                        </div>
+                        <div class="org-box">
+                            <i class="fas fa-warehouse"></i>
+                            <h4>Kho bãi</h4>
+                            <p>Quản lý vật tư</p>
+                        </div>
+                    </div>
+                    <div class="org-level">
+                        <div class="org-box">
+                            <i class="fas fa-scissors"></i>
+                            <h4>Phòng Cắt</h4>
+                            <p>28 người</p>
+                        </div>
+                        <div class="org-box">
+                            <i class="fas fa-sewing-machine"></i>
+                            <h4>Phòng May</h4>
+                            <p>360 người</p>
+                        </div>
+                        <div class="org-box">
+                            <i class="fas fa-search"></i>
+                            <h4>Kiểm tra chất lượng</h4>
+                            <p>32 người</p>
+                        </div>
+                        <div class="org-box">
+                            <i class="fas fa-tshirt"></i>
+                            <h4>Phòng Ủi</h4>
+                            <p>20 người</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="facility-layout">
+                    <h3>Bố trí nhà máy</h3>
+                    <div class="layout-grid">
+                        <div class="layout-item">
+                            <i class="fas fa-building"></i>
+                            <h4>Nhà máy chính</h4>
+                            <p>4.500 m²</p>
+                        </div>
+                        <div class="layout-item">
+                            <i class="fas fa-warehouse"></i>
+                            <h4>Kho hàng 1</h4>
+                            <p>2.500 m²</p>
+                        </div>
+                        <div class="layout-item">
+                            <i class="fas fa-warehouse"></i>
+                            <h4>Kho hàng 2</h4>
+                            <p>3.000 m²</p>
+                        </div>
+                        <div class="layout-item">
+                            <i class="fas fa-office"></i>
+                            <h4>Văn phòng</h4>
+                            <p>Phòng họp, CAD</p>
+                        </div>
+                        <div class="layout-item">
+                            <i class="fas fa-tools"></i>
+                            <h4>Phòng máy</h4>
+                            <p>700+ máy móc</p>
+                        </div>
+                        <div class="layout-item">
+                            <i class="fas fa-fire"></i>
+                            <h4>Hệ thống PCCC</h4>
+                            <p>An toàn cao</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipment Section -->
+    <section id="equipment" class="equipment">
+        <div class="equipment-bg-pattern"></div>
+        <div class="container">
+            <div class="section-header">
+                <h2>Danh sách máy móc</h2>
+                <p>Hơn 700 máy móc hiện đại từ các nước hàng đầu thế giới</p>
+            </div>
+            <div class="equipment-showcase">
+                <div class="equipment-preview-image">
+                    <img src="imgs/bhad-production-floor-1.jpg" alt="BHAD Garment Production Floor - Industrial Sewing Machines" />
+                    <div class="image-overlay">
+                        <h4>Dây chuyền sản xuất BHAD</h4>
+                        <p>Máy may công nghiệp JACK - 700+ máy</p>
+                    </div>
+                </div>
+                <div class="equipment-preview-image">
+                    <img src="imgs/bhad-production-floor-3.jpg" alt="BHAD Garment Warehouse - Modern Storage System" />
+                    <div class="image-overlay">
+                        <h4>Kho hàng hiện đại</h4>
+                        <p>Hệ thống lưu trữ tự động - 5.500 m²</p>
+                    </div>
+                </div>
+            </div>
+            <div class="equipment-categories">
+                <div class="equipment-category">
+                    <h3><i class="fas fa-sewing-machine"></i> Máy may công nghiệp</h3>
+                    <div class="equipment-list">
+                        <div class="equipment-item">
+                            <span class="equipment-name">Máy may 1 kim</span>
+                            <span class="equipment-count">300 máy</span>
+                        </div>
+                        <div class="equipment-item">
+                            <span class="equipment-name">Máy may 2 kim</span>
+                            <span class="equipment-count">35 máy</span>
+                        </div>
+                        <div class="equipment-item">
+                            <span class="equipment-name">Máy overlock 4 chỉ</span>
+                            <span class="equipment-count">100 máy</span>
+                        </div>
+                        <div class="equipment-item">
+                            <span class="equipment-name">Máy overlock 5 chỉ</span>
+                            <span class="equipment-count">40 máy</span>
+                        </div>
+                        <div class="equipment-item">
+                            <span class="equipment-name">Máy ghim (Bartack)</span>
+                            <span class="equipment-count">12 máy</span>
+                        </div>
+                        <div class="equipment-item">
+                            <span class="equipment-name">Máy cắt cúc</span>
+                            <span class="equipment-count">6 máy</span>
+                        </div>
+                        <div class="equipment-item">
+                            <span class="equipment-name">Máy đệm cúc</span>
+                            <span class="equipment-count">6 máy</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="equipment-category">
+                    <h3><i class="fas fa-cut"></i> Máy cắt & hoàn thiện</h3>
+                    <div class="equipment-list">
+                        <div class="equipment-item">
+                            <span class="equipment-name">Máy CNC cắt</span>
+                            <span class="equipment-count">1 máy</span>
+                        </div>
+                        <div class="equipment-item">
+                            <span class="equipment-name">Máy cắt</span>
+                            <span class="equipment-count">10 máy</span>
+                        </div>
+                        <div class="equipment-item">
+                            <span class="equipment-name">Máy cắt cuộn</span>
+                            <span class="equipment-count">8 máy</span>
+                        </div>
+                        <div class="equipment-item">
+                            <span class="equipment-name">Máy kiểm tra vải</span>
+                            <span class="equipment-count">2 máy</span>
+                        </div>
+                        <div class="equipment-item">
+                            <span class="equipment-name">Máy ủi công nghiệp</span>
+                            <span class="equipment-count">4 máy</span>
+                        </div>
+                        <div class="equipment-item">
+                            <span class="equipment-name">Bàn ủi hơi nước</span>
+                            <span class="equipment-count">30 bàn</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="equipment-category">
+                    <h3><i class="fas fa-microchip"></i> Thiết bị hỗ trợ</h3>
+                    <div class="equipment-list">
+                        <div class="equipment-item">
+                            <span class="equipment-name">Máy Kansai/Pressed blanching</span>
+                            <span class="equipment-count">50 máy</span>
+                        </div>
+                        <div class="equipment-item">
+                            <span class="equipment-name">Máy lập trình lớn</span>
+                            <span class="equipment-count">16 máy</span>
+                        </div>
+                        <div class="equipment-item">
+                            <span class="equipment-name">Máy lập trình nhỏ</span>
+                            <span class="equipment-count">5 máy</span>
+                        </div>
+                        <div class="equipment-item">
+                            <span class="equipment-name">Máy xịt cúc</span>
+                            <span class="equipment-count">15 máy</span>
+                        </div>
+                        <div class="equipment-item">
+                            <span class="equipment-name">Máy đệm đóng/mở tự động</span>
+                            <span class="equipment-count">2 máy</span>
+                        </div>
+                        <div class="equipment-item">
+                            <span class="equipment-name">Máy phát điện</span>
+                            <span class="equipment-count">1 máy</span>
+                        </div>
+                        <div class="equipment-item">
+                            <span class="equipment-name">Forklift điện</span>
+                            <span class="equipment-count">2 máy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="equipment-origin">
+                <h3>Nguồn gốc xuất xứ</h3>
+                <div class="origin-flags">
+                    <div class="flag-item">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAzMiAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjI0IiBmaWxsPSIjZmYyMDAwIi8+CjxyZWN0IHg9IjAiIHk9IjE2IiB3aWR0aD0iMzIiIGhlaWdodD0iOCIgZmlsbD0iI2ZmNDAwMCIvPgo8cmVjdCB4PSIwIiB5PSI4IiB3aWR0aD0iMzIiIGhlaWdodD0iNCIgZmlsbD0iIzAwRkZGRiIvPgo8L3N2Zz4K" alt="China Flag">
+                        <span>Trung Quốc</span>
+                    </div>
+                    <div class="flag-item">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAzMiAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjI0IiBmaWxsPSIjZmYwMDAwIi8+CjxjaXJjbGUgY3g9IjE2IiBjeT0iMTIiIHI9IjQiIGZpbGw9IiNmZmQ1MDAiLz4KPC9zdmc+Cg==" alt="Japan Flag">
+                        <span>Nhật Bản</span>
+                    </div>
+                    <div class="flag-item">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAzMiAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjI0IiBmaWxsPSIjRkZGRkZGIi8+CjxyZWN0IHg9IjAiIHk9IjgiIHdpZHRoPSIzMiIgaGVpZ2h0PSI4IiBmaWxsPSIjRkQwMDAwIi8+CjxyZWN0IHg9IjAiIHk9IjE2IiB3aWR0aD0iMzIiIGhlaWdodD0iNCIgZmlsbD0iI0ZEMDAwMCIvPgo8L3N2Zz4K" alt="Germany Flag">
+                        <span>Đức</span>
+                    </div>
+                    <div class="flag-item">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAzMiAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjI0IiBmaWxsPSIjRkZGRkZGIi8+CjxyZWN0IHg9IjAiIHk9IjgiIHdpZHRoPSIzMiIgaGVpZ2h0PSI0IiBmaWxsPSIjRkZGMDAwIi8+CjxyZWN0IHg9IjAiIHk9IjEyIiB3aWR0aD0iMzIiIGhlaWdodD0iNCIgZmlsbD0iI0ZGMDAwMCIvPgo8Y2lyY2xlIGN4PSIxNiIgY3k9IjEyIiByPSI0IiBmaWxsPSIjMDAwRkZGIi8+Cjwvc3ZnPgo=" alt="USA Flag">
+                        <span>Mỹ</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team">
+        <div class="team-bg-pattern"></div>
+        <div class="container">
+            <div class="section-header">
+                <h2>Nhân lực</h2>
+                <p>Đội ngũ chuyên nghiệp với 540 nhân viên</p>
+            </div>
+            <div class="team-showcase">
+                <div class="team-image">
+                    <img src="imgs/garment_manufacturing_quality_control_worker.jpg" alt="Nhân viên kiểm tra chất lượng" />
+                    <div class="image-caption">
+                        <h4>Kiểm tra chất lượng</h4>
+                        <p>Chuyên nghiệp - Tận tâm - Chính xác</p>
+                    </div>
+                </div>
+                <div class="team-stats">
+                <div class="stat-item">
+                    <h3>540</h3>
+                    <p>Tổng số nhân viên</p>
+                </div>
+                <div class="stat-item">
+                    <h3>10</h3>
+                    <p>Dây chuyền sản xuất</p>
+                </div>
+                <div class="stat-item">
+                    <h3>30-35</h3>
+                    <p>Nhân viên/dây chuyền</p>
+                </div>
+            </div>
+            <div class="team-breakdown">
+                <div class="breakdown-grid">
+                    <div class="breakdown-item">
+                        <strong>Văn phòng:</strong> 20 người
+                    </div>
+                    <div class="breakdown-item">
+                        <strong>Cắt (Cutting):</strong> 28 người
+                    </div>
+                    <div class="breakdown-item">
+                        <strong>May (Sewing):</strong> 360 người
+                    </div>
+                    <div class="breakdown-item">
+                        <strong>Kiểm tra (QC & QA):</strong> 32 người
+                    </div>
+                    <div class="breakdown-item">
+                        <strong>Đồ phải (Iron):</strong> 20 người
+                    </div>
+                    <div class="breakdown-item">
+                        <strong>Kỹ thuật:</strong> 30 người
+                    </div>
+                    <div class="breakdown-item">
+                        <strong>Đóng gói (Packing):</strong> 20 người
+                    </div>
+                    <div class="breakdown-item">
+                        <strong>Kho (Warehouse):</strong> 10 người
+                    </div>
+                    <div class="breakdown-item">
+                        <strong>Khác:</strong> 20 người
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="contact-bg-pattern"></div>
+        <div class="container">
+            <div class="section-header">
+                <h2>Liên hệ với chúng tôi</h2>
+                <p>Sẵn sàng hợp tác và phục vụ quý khách hàng</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Địa chỉ</h4>
+                            <p>Hien Tay Hamlet, Quang Luu Commune<br>Quang Xuong District, Thanh Hoa Province, Vietnam</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Điện thoại</h4>
+                            <p>(+84) 2373.730.333</p>
+                            <p>(+84) 986.51.33.66</p>
+                            <p>(+84) 946.00.33.39</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>maybhad@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Giờ làm việc</h4>
+                            <p>7:15 AM - 4:30 PM<br>(Thứ 2 - Thứ 6)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-map">
+                    <div class="map-placeholder">
+                        <i class="fas fa-map"></i>
+                        <p>Bản đồ vị trí</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>BHAD GARMENT</h3>
+                    <p>Nhà sản xuất may mặc chuyên nghiệp</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4>Thông tin</h4>
+                        <ul>
+                            <li><a href="#about">Về chúng tôi</a></li>
+                            <li><a href="#capacity">Năng lực</a></li>
+                            <li><a href="#products">Sản phẩm</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Liên hệ</h4>
+                        <ul>
+                            <li><a href="tel:+842373730333">(+84) 2373.730.333</a></li>
+                            <li><a href="mailto:maybhad@gmail.com">maybhad@gmail.com</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 BHAD Garment Joint Stock Company. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
