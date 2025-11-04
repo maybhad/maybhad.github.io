@@ -339,55 +339,22 @@ class I18nManager {
 }
 
 // Initialize i18n when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    window.i18n = new I18nManager();
+function initializeI18n() {
+    if (typeof window.i18n !== 'undefined') {
+        console.log('i18n already initialized');
+        return;
+    }
     
-    // Add language switcher styles
-    const style = document.createElement('style');
-    style.textContent = `
-        .language-switcher {
-            display: flex;
-            gap: 5px;
-            margin-left: 20px;
-        }
-        
-        .lang-btn {
-            padding: 5px 12px;
-            border: 1px solid #ddd;
-            background: white;
-            color: #333;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            min-width: 35px;
-        }
-        
-        .lang-btn:hover {
-            background: #f0f0f0;
-            border-color: #2563eb;
-        }
-        
-        .lang-btn.active {
-            background: #2563eb;
-            color: white;
-            border-color: #2563eb;
-        }
-        
-        @media (max-width: 768px) {
-            .language-switcher {
-                margin-left: 10px;
-            }
-            
-            .lang-btn {
-                padding: 4px 8px;
-                font-size: 0.7rem;
-                min-width: 30px;
-            }
-        }
-    `;
-    document.head.appendChild(style);
-});
+    window.i18n = new I18nManager();
+    console.log('Multi-language system initialized: English (EN) / Tiếng Việt (VI)');
+}
 
-console.log('Multi-language system loaded: English (EN) / Tiếng Việt (VI)');
+// Initialize immediately if DOM is ready, otherwise wait
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeI18n);
+} else {
+    initializeI18n();
+}
+
+// Fallback initialization
+setTimeout(initializeI18n, 100);

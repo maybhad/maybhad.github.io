@@ -1,4 +1,7 @@
-// DOM Content Loaded
+// BHAD Garment Website - Main Script
+// Note: i18n.js handles its own DOMContentLoaded
+
+// Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
     // Mobile Navigation Toggle
     const hamburger = document.querySelector('.hamburger');
