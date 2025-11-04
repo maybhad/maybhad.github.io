@@ -36,6 +36,36 @@ const translations = {
         capacity_title: "Production Capacity",
         capacity_subtitle: "Modern infrastructure with 25,000 m² area and advanced production lines",
         
+        // QC Inspection
+        qc_title: "Quality Inspection",
+        qc_desc: "32 professional QC/QA staff",
+        
+        // Showroom
+        showroom_title: "Showroom & Meeting",
+        showroom_desc: "Product presentation for clients",
+        
+        // Capacity Details
+        total_area: "Total Area:",
+        factory_area: "Factory:",
+        warehouse_1: "Warehouse 1:",
+        warehouse_2: "Warehouse 2:",
+        
+        // Monthly Production
+        monthly_output: "Monthly Output",
+        tshirt_output: "T-shirts:",
+        pants_output: "Pants:",
+        fashionable_output: "Fashionable Jackets:",
+        hoodie_output: "Hoodies:",
+        jacket_output: "Jackets:",
+        other_products: "Other Products:",
+        
+        // Modern Equipment
+        modern_equipment: "Modern Equipment",
+        total_machines: "Total Machines:",
+        origin: "Origin:",
+        production_lines: "Production Lines:",
+        machines_per_line: "Machines/Line:",
+        
         // Production Process Section
         production_title: "Production Process",
         production_subtitle: "From modern machinery to product finishing - Professional process",
@@ -56,9 +86,21 @@ const translations = {
         quality_title: "Quality Control",
         quality_subtitle: "Strict QC/QA system with 32 experienced specialists",
         
+        // Quality Inspection Types
+        quality_first_title: "Quality Classification",
+        quality_first_desc: "PASSED GOODS, PENDING INSPECTION, DEFECTIVE GOODS with 2-hour processing time",
+        comprehensive_check_title: "Comprehensive Inspection",
+        comprehensive_check_desc: "Inspection at every stage from cutting, sewing to product finishing",
+        final_check_title: "Final Check",
+        final_check_desc: "All products are carefully inspected before packaging and export",
+        
         // Management Section
         management_title: "Management Structure",
         management_subtitle: "Experienced and professional leadership team",
+        
+        // Team Section
+        team_title: "Human Resources",
+        team_subtitle: "Professional team with 540 employees",
         
         // Equipment Section
         equipment_title: "Equipment List",
@@ -67,6 +109,8 @@ const translations = {
         // Products Section
         products_title: "Products & Clients",
         products_subtitle: "Serving famous global brands with the highest quality",
+        product_categories: "Product Categories",
+        jacket_category: "Jackets",
         
         // Certificates Section
         certificates_title: "Certificates & Awards",
@@ -90,8 +134,8 @@ const translations = {
         img_cnc_machine: "CNC Automatic Machine PUMA",
         img_juck_machine: "JUCK Sewing Machine with Work Instructions",
         img_zoje_machine: "ZOJE Sewing Machine - Sports Production",
-        img_quality_check: "Quality Check and Folding Process",
-        img_ironing: "Ironing and Folding Finishing",
+        img_quality_check: "Folding and Quality Inspection",
+        img_ironing: "Folding and Ironing Finishing",
         img_packaging: "Professional Packaging Area",
         img_warehouse: "BHAD Warehouse with Fabric Information",
         img_compliance: "BHAD Garment Office - Compliance Room",
@@ -103,13 +147,16 @@ const translations = {
         gallery_export_title: "Export Center",
         gallery_export_desc: "Showroom displaying products for international clients",
         gallery_lines_title: "Production Lines",
-        gallery_lines_desc: "10 lines with strict quality control system"
-        img_quality_check: "Folding and Quality Inspection",
-        img_ironing: "Folding and Ironing Finishing",
-        img_packaging: "Professional Packaging Area",
-        img_warehouse: "BHAD Warehouse with Fabric Information",
-        img_compliance: "BHAD Garment Office - Compliance Room",
-        img_product: "BHAD Garment Puffer Jacket Production"
+        gallery_lines_desc: "10 lines with strict quality control system",
+        
+        // Additional Vietnamese translations needed
+        total_leadership: "Overall Leadership",
+        machines_count: "700+ machines",
+        bhad_production_lines: "BHAD Production Lines",
+        modern_warehouse: "Modern Warehouse",
+        total_employees: "Total Employees",
+        production_lines_count: "Production Lines",
+        professional_garment_manufacturer: "Professional Garment Manufacturer"
     },
     
     vi: {
@@ -146,6 +193,36 @@ const translations = {
         capacity_title: "Năng lực sản xuất",
         capacity_subtitle: "Cơ sở hạ tầng hiện đại với diện tích 25.000 m² và dây chuyền sản xuất tiên tiến",
         
+        // QC Inspection
+        qc_title: "Kiểm tra chất lượng",
+        qc_desc: "32 nhân viên QC/QA chuyên nghiệp",
+        
+        // Showroom
+        showroom_title: "Showroom & Meeting",
+        showroom_desc: "Trình bày sản phẩm cho khách hàng",
+        
+        // Capacity Details
+        total_area: "Tổng diện tích:",
+        factory_area: "Nhà máy:",
+        warehouse_1: "Kho hàng 1:",
+        warehouse_2: "Kho hàng 2:",
+        
+        // Monthly Production
+        monthly_output: "Sản lượng hàng tháng",
+        tshirt_output: "Áo thun (T-shirt):",
+        pants_output: "Quần (Pants):",
+        fashionable_output: "Áo khoác Fashionable:",
+        hoodie_output: "Áo hoodie:",
+        jacket_output: "Áo khoác Jacket:",
+        other_products: "Sản phẩm khác:",
+        
+        // Modern Equipment
+        modern_equipment: "Máy móc hiện đại",
+        total_machines: "Tổng máy móc:",
+        origin: "Nguồn gốc:",
+        production_lines: "Đường chuyền:",
+        machines_per_line: "Máy/dây chuyền:",
+        
         // Production Process Section
         production_title: "Quy trình sản xuất",
         production_subtitle: "Từ máy móc hiện đại đến hoàn thiện sản phẩm - Quy trình chuyên nghiệp",
@@ -166,9 +243,21 @@ const translations = {
         quality_title: "Kiểm soát chất lượng",
         quality_subtitle: "Hệ thống QC/QA nghiêm ngặt với 32 chuyên viên kinh nghiệm",
         
+        // Quality Inspection Types
+        quality_first_title: "Phân loại chất lượng",
+        quality_first_desc: "HÀNG KIỂM ĐẠT, HÀNG CHỜ KIỂM, HÀNG KIỂM LỖI với thời gian xử lý 2 giờ",
+        comprehensive_check_title: "Kiểm tra toàn diện",
+        comprehensive_check_desc: "Kiểm tra ở mọi công đoạn từ cắt, may, đến hoàn thiện sản phẩm",
+        final_check_title: "Kiểm tra cuối cùng",
+        final_check_desc: "Mọi sản phẩm đều được kiểm tra kỹ lưỡng trước khi đóng gói và xuất khẩu",
+        
         // Management Section
         management_title: "Bộ máy quản lý",
         management_subtitle: "Đội ngũ lãnh đạo giàu kinh nghiệm và chuyên nghiệp",
+        
+        // Team Section
+        team_title: "Nhân sự",
+        team_subtitle: "Đội ngũ chuyên nghiệp với 540 nhân viên",
         
         // Equipment Section
         equipment_title: "Danh sách máy móc",
@@ -177,6 +266,8 @@ const translations = {
         // Products Section
         products_title: "Sản phẩm & Khách hàng",
         products_subtitle: "Phục vụ các thương hiệu nổi tiếng toàn cầu với chất lượng cao nhất",
+        product_categories: "Danh mục sản phẩm",
+        jacket_category: "Áo khoác (Jacket)",
         
         // Certificates Section
         certificates_title: "Chứng nhận & Giải thưởng",
@@ -213,7 +304,16 @@ const translations = {
         gallery_export_title: "Trung tâm xuất khẩu",
         gallery_export_desc: "Showroom trưng bày sản phẩm cho khách hàng quốc tế",
         gallery_lines_title: "Dây chuyền sản xuất",
-        gallery_lines_desc: "10 dây chuyền với hệ thống kiểm soát chất lượng nghiêm ngặt"
+        gallery_lines_desc: "10 dây chuyền với hệ thống kiểm soát chất lượng nghiêm ngặt",
+        
+        // Additional Vietnamese translations needed
+        total_leadership: "Lãnh đạo tổng thể",
+        machines_count: "700+ máy móc",
+        bhad_production_lines: "Dây chuyền sản xuất BHAD",
+        modern_warehouse: "Kho hàng hiện đại",
+        total_employees: "Tổng số nhân viên",
+        production_lines_count: "Dây chuyền sản xuất",
+        professional_garment_manufacturer: "Nhà sản xuất may mặc chuyên nghiệp"
     }
 };
 
@@ -225,9 +325,8 @@ class I18nManager {
     }
     
     init() {
-        // Set default language from browser or localStorage
-        const savedLang = localStorage.getItem('bhad_language') || 
-                         (navigator.language.startsWith('vi') ? 'vi' : 'en');
+        // Set default language to English always - no browser detection
+        const savedLang = localStorage.getItem('bhad_language') || 'en';
         this.setLanguage(savedLang);
         this.setupLanguageSwitcher();
         this.addDataKeys();
