@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>i18n Test - BHAD Garment</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .lang-btn { margin: 5px; padding: 10px; cursor: pointer; }
+        .lang-btn.active { background: #007bff; color: white; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; }
+        h3 { color: #333; }
+        .result { margin-top: 10px; padding: 10px; background: #f8f9fa; }
+        .success { color: green; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>BHAD Garment - i18n Language Switch Test</h1>
+    
+    <div class="test-section">
+        <h3>Language Buttons Test</h3>
+        <button class="lang-btn active" data-lang="en" onclick="testLanguage('en')">English (EN)</button>
+        <button class="lang-btn" data-lang="vi" onclick="testLanguage('vi')">Vietnamese (VI)</button>
+        <div id="lang-result" class="result">Click buttons to test language switching</div>
+    </div>
+
+    <div class="test-section">
+        <h3>Translation Keys Test</h3>
+        <div id="translation-test">
+            <p data-key="nav_home">Home</p>
+            <p data-key="nav_about">About Us</p>
+            <p data-key="hero_subtitle">Professional Garment Manufacturer - High Quality - Reliable</p>
+            <p data-key="contact_title">Contact Us</p>
+            <p data-key="sac_higg_title">SAC Higg</p>
+            <p data-key="meeting_rooms_cad">Meeting rooms, CAD</p>
+            <p data-key="viet_address_line1">Hien Tay Hamlet, Quang Luu Commune</p>
+            <p data-key="viet_address_line2">Quang Xuong District, Thanh Hoa Province</p>
+            <p data-key="viet_address_line3">Vietnam</p>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h3>Console Debug Info</h3>
+        <div id="console-info" class="result"></div>
+    </div>
+
+    <script src="i18n.js"></script>
+    <script>
+        function testLanguage(lang) {
+            const result = document.getElementById('lang-result');
+            const consoleInfo = document.getElementById('console-info');
+            
+            if (window.i18n) {
+                window.i18n.setLanguage(lang);
+                result.innerHTML = `<span class="success">✓ Language switched to ${lang.toUpperCase()}</span>`;
+                
+                // Get current language and show some translations
+                const currentLang = window.i18n.getCurrentLanguage();
+                const translations = [
+                    window.i18n.getTranslation('nav_home'),
+                    window.i18n.getTranslation('nav_about'),
+                    window.i18n.getTranslation('hero_subtitle'),
+                    window.i18n.getTranslation('contact_title')
+                ];
+                
+                consoleInfo.innerHTML = `
+                    <strong>Current Language:</strong> ${currentLang}<br>
+                    <strong>Sample Translations:</strong><br>
+                    • Home: ${translations[0]}<br>
+                    • About Us: ${translations[1]}<br>
+                    • Hero Subtitle: ${translations[2]}<br>
+                    • Contact Title: ${translations[3]}<br>
+                    <strong>Status:</strong> <span class="success">✓ i18n system loaded successfully</span>
+                `;
+            } else {
+                result.innerHTML = '<span class="error">✗ i18n system not loaded</span>';
+                consoleInfo.innerHTML = '<span class="error">✗ i18n object not found</span>';
+            }
+        }
+        
+        // Auto-test after page load
+        setTimeout(() => {
+            if (window.i18n) {
+                document.getElementById('lang-result').innerHTML = 
+                    '<span class="success">✓ i18n system loaded - Default language: ' + 
+                    window.i18n.getCurrentLanguage() + '</span>';
+            } else {
+                document.getElementById('lang-result').innerHTML = 
+                    '<span class="error">✗ i18n system failed to load</span>';
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

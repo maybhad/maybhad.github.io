@@ -276,7 +276,14 @@ const translations = {
         // Alternative labels
         infrastructure_alt: "Infrastructure",
         quality_monitoring: "Quality Monitoring",
-        overall_leadership_desc: "Overall Leadership"
+        overall_leadership_desc: "Overall Leadership",
+        
+        // Missing translations
+        sac_higg_title: "SAC Higg",
+        meeting_rooms_cad: "Meeting rooms, CAD",
+        viet_address_line1: "Hien Tay Hamlet, Quang Luu Commune",
+        viet_address_line2: "Quang Xuong District, Thanh Hoa Province",
+        viet_address_line3: "Vietnam"
     },
     
     vi: {
@@ -553,7 +560,14 @@ const translations = {
         // Alternative labels
         infrastructure_alt: "Cơ sở hạ tầng",
         quality_monitoring: "Giám sát chất lượng",
-        overall_leadership_desc: "Lãnh đạo tổng thể"
+        overall_leadership_desc: "Lãnh đạo tổng thể",
+        
+        // Missing translations
+        sac_higg_title: "SAC Higg",
+        meeting_rooms_cad: "Phòng họp, CAD",
+        viet_address_line1: "Thôn Hiền Tây, Xã Quang Lưu",
+        viet_address_line2: "Huyện Quảng Xương, Tỉnh Thanh Hóa",
+        viet_address_line3: "Việt Nam"
     }
 };
 
@@ -581,6 +595,10 @@ class I18nManager {
     
     getTranslation(key) {
         return translations[this.currentLang][key] || key;
+    }
+    
+    getCurrentLanguage() {
+        return this.currentLang;
     }
     
     updateContent() {
