@@ -719,7 +719,7 @@ section {
 
 .collections-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: 1fr;
     gap: 2rem;
     margin-top: 3rem;
 }
@@ -773,6 +773,17 @@ section {
 }
 
 /* Responsive Design for Collections */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .collections-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.75rem;
+    }
+    
+    .collection-content {
+        padding: 1.35rem;
+    }
+}
+
 @media (max-width: 768px) {
     .collections-grid {
         grid-template-columns: 1fr;
@@ -791,12 +802,7 @@ section {
 @media (min-width: 1024px) {
     .collections-grid {
         grid-template-columns: repeat(3, 1fr);
-    }
-    
-    .collections-grid .collection-card:last-child {
-        grid-column: span 3;
-        max-width: 400px;
-        margin: 0 auto;
+        gap: 2rem;
     }
 }
 
