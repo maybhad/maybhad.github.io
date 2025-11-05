@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>i18n Fix Test - BHAD Garment</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f0f8ff; }
+        .test-section { margin: 20px 0; padding: 20px; background: white; border-radius: 8px; }
+        .lang-btn { margin: 5px; padding: 12px 20px; cursor: pointer; border: 2px solid #007bff; background: white; font-weight: bold; }
+        .lang-btn.active { background: #007bff; color: white; }
+        .success { color: #28a745; font-weight: bold; }
+        .error { color: #dc3545; font-weight: bold; }
+        .test-result { margin: 10px 0; padding: 10px; border-radius: 4px; }
+        .test-result.pass { background: #d4edda; border: 1px solid #c3e6cb; }
+        .test-result.fail { background: #f8d7da; border: 1px solid #f5c6cb; }
+    </style>
+</head>
+<body>
+    <h1>🛠️ BHAD Garment - i18n Fix Verification</h1>
+    
+    <div class="test-section">
+        <h3>🔍 System Status Check</h3>
+        <div id="system-status">Loading...</div>
+    </div>
+
+    <div class="test-section">
+        <h3>🌐 Language Switching Test</h3>
+        <div class="language-switcher">
+            <button class="lang-btn active" data-lang="en">English (EN)</button>
+            <button class="lang-btn" data-lang="vi">Tiếng Việt (VI)</button>
+        </div>
+        <div id="switch-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h3>📝 Translation Test Elements</h3>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <div class="test-result">
+                <strong>Navigation - Home:</strong> <span data-key="nav_home">Loading...</span>
+            </div>
+            <div class="test-result">
+                <strong>Navigation - About:</strong> <span data-key="nav_about">Loading...</span>
+            </div>
+            <div class="test-result">
+                <strong>Hero Subtitle:</strong> <span data-key="hero_subtitle">Loading...</span>
+            </div>
+            <div class="test-result">
+                <strong>Contact Title:</strong> <span data-key="contact_title">Loading...</span>
+            </div>
+            <div class="test-result">
+                <strong>SAC Higg:</strong> <span data-key="sac_higg_title">Loading...</span>
+            </div>
+            <div class="test-result">
+                <strong>Meeting Rooms:</strong> <span data-key="meeting_rooms_cad">Loading...</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h3>📊 Console Debug Info</h3>
+        <div id="debug-info" style="background: #f8f9fa; padding: 10px; border-radius: 4px; font-family: monospace;"></div>
+    </div>
+
+    <!-- Load scripts in correct order -->
+    <script src="script.js"></script>
+    <script src="i18n.js"></script>
+    
+    <script>
+        // Wait for both scripts to load
+        setTimeout(runTests, 300);
+        
+        function runTests() {
+            console.log('=== RUNNING i18n FIX TESTS ===');
+            
+            const statusDiv = document.getElementById('system-status');
+            const switchResult = document.getElementById('switch-result');
+            const debugInfo = document.getElementById('debug-info');
+            
+            let testResults = [];
+            
+            // Test 1: Check i18n object
+            if (typeof window.i18n !== 'undefined') {
+                statusDiv.innerHTML = '<div class="test-result pass">✅ i18n object loaded successfully</div>';
+                testResults.push('✅ i18n object exists');
+            } else {
+                statusDiv.innerHTML = '<div class="test-result fail">❌ i18n object not found</div>';
+                testResults.push('❌ i18n object missing');
+            }
+            
+            // Test 2: Check translations
+            if (typeof translations !== 'undefined') {
+                testResults.push('✅ Translations object loaded');
+                if (translations.en && translations.vi) {
+                    testResults.push(`✅ Both languages available (EN: ${Object.keys(translations.en).length} keys, VI: ${Object.keys(translations.vi).length} keys)`);
+                } else {
+                    testResults.push('❌ Missing language sections');
+                }
+            }
+            
+            // Test 3: Test current language
+            if (window.i18n) {
+                const currentLang = window.i18n.getCurrentLanguage();
+                testResults.push(`✅ Current language: ${currentLang}`);
+            }
+            
+            // Test 4: Test language switching
+            if (window.i18n) {
+                const originalLang = window.i18n.getCurrentLanguage();
+                testResults.push(`Testing language switching...`);
+                
+                setTimeout(() => {
+                    window.i18n.setLanguage('vi');
+                    const newLang = window.i18n.getCurrentLanguage();
+                    
+                    if (newLang === 'vi') {
+                        switchResult.innerHTML = '<div class="test-result pass">✅ Language switching to Vietnamese works!</div>';
+                        testResults.push('✅ Language switching works');
+                    } else {
+                        switchResult.innerHTML = '<div class="test-result fail">❌ Language switching failed</div>';
+                        testResults.push('❌ Language switching failed');
+                    }
+                    
+                    // Switch back to English
+                    setTimeout(() => {
+                        window.i18n.setLanguage('en');
+                        debugInfo.innerHTML = testResults.map(r => r).join('<br>');
+                        
+                        // Final verification
+                        if (testResults.filter(r => r.startsWith('✅')).length >= 4) {
+                            statusDiv.innerHTML += '<div class="test-result pass">🎉 ALL TESTS PASSED - i18n system is working correctly!</div>';
+                        }
+                    }, 100);
+                }, 100);
+            }
+            
+            // Initial debug info
+            debugInfo.innerHTML = testResults.map(r => r).join('<br>');
+        }
+    </script>
+</body>
+</html>

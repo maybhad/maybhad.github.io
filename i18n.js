@@ -695,15 +695,18 @@ class I18nManager {
     }
 }
 
-// Initialize i18n when DOM is loaded
+// Initialize i18n when DOM is loaded and main script is ready
 function initializeI18n() {
     if (typeof window.i18n !== 'undefined') {
         console.log('i18n already initialized');
         return;
     }
     
-    window.i18n = new I18nManager();
-    console.log('Multi-language system initialized: English (EN) / Tiếng Việt (VI)');
+    // Wait a bit to ensure script.js has initialized
+    setTimeout(() => {
+        window.i18n = new I18nManager();
+        console.log('Multi-language system initialized: English (EN) / Tiếng Việt (VI)');
+    }, 50);
 }
 
 // Initialize immediately if DOM is ready, otherwise wait
@@ -713,5 +716,5 @@ if (document.readyState === 'loading') {
     initializeI18n();
 }
 
-// Fallback initialization
-setTimeout(initializeI18n, 100);
+// Fallback initialization with longer delay
+setTimeout(initializeI18n, 200);

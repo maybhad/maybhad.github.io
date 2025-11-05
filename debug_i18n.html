@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Debug i18n System - BHAD Garment</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; }
+        .debug-section { margin: 20px 0; padding: 15px; background: white; border-radius: 5px; }
+        .lang-btn { margin: 5px; padding: 10px 15px; cursor: pointer; border: 1px solid #ddd; background: #f8f9fa; }
+        .lang-btn.active { background: #007bff; color: white; border-color: #007bff; }
+        .test-element { margin: 10px 0; padding: 10px; border: 1px solid #e0e0e0; }
+        .error { color: red; }
+        .success { color: green; }
+        .warning { color: orange; }
+    </style>
+</head>
+<body>
+    <h1>BHAD Garment - i18n Debug Test</h1>
+    
+    <div class="debug-section">
+        <h3>1. i18n System Status</h3>
+        <div id="i18n-status">Loading...</div>
+    </div>
+
+    <div class="debug-section">
+        <h3>2. Language Switching Test</h3>
+        <button class="lang-btn active" data-lang="en">English (EN)</button>
+        <button class="lang-btn" data-lang="vi">Vietnamese (VI)</button>
+        <div id="lang-result"></div>
+    </div>
+
+    <div class="debug-section">
+        <h3>3. Translation Keys Test</h3>
+        <div class="test-element">
+            <strong>Nav Home:</strong> <span data-key="nav_home">Loading...</span>
+        </div>
+        <div class="test-element">
+            <strong>Hero Subtitle:</strong> <span data-key="hero_subtitle">Loading...</span>
+        </div>
+        <div class="test-element">
+            <strong>About Title:</strong> <span data-key="about_title">Loading...</span>
+        </div>
+        <div class="test-element">
+            <strong>Contact Title:</strong> <span data-key="contact_title">Loading...</span>
+        </div>
+        <div class="test-element">
+            <strong>SAC Higg:</strong> <span data-key="sac_higg_title">Loading...</span>
+        </div>
+        <div class="test-element">
+            <strong>Meeting Rooms:</strong> <span data-key="meeting_rooms_cad">Loading...</span>
+        </div>
+    </div>
+
+    <div class="debug-section">
+        <h3>4. Console Errors</h3>
+        <div id="console-errors"></div>
+    </div>
+
+    <script src="i18n.js"></script>
+    <script>
+        // Override console.error to capture errors
+        const originalError = console.error;
+        const errors = [];
+        
+        console.error = function(...args) {
+            errors.push(args.join(' '));
+            originalError.apply(console, args);
+        };
+        
+        // Wait for i18n to load
+        setTimeout(() => {
+            checkI18nSystem();
+        }, 500);
+        
+        function checkI18nSystem() {
+            const statusDiv = document.getElementById('i18n-status');
+            const langResult = document.getElementById('lang-result');
+            const consoleDiv = document.getElementById('console-errors');
+            
+            // Check if i18n object exists
+            if (typeof window.i18n === 'undefined') {
+                statusDiv.innerHTML = '<span class="error">✗ i18n object not found</span>';
+                return;
+            }
+            
+            // Check i18n properties
+            const i18n = window.i18n;
+            statusDiv.innerHTML = `
+                <span class="success">✓ i18n object loaded</span><br>
+                Current Language: ${i18n.getCurrentLanguage()}<br>
+                Translation count: ${Object.keys(translations[i18n.getCurrentLanguage()]).length}
+            `;
+            
+            // Check translations object
+            if (typeof translations === 'undefined') {
+                langResult.innerHTML = '<span class="error">✗ translations object not found</span>';
+                return;
+            }
+            
+            langResult.innerHTML = `
+                <span class="success">✓ translations object exists</span><br>
+                English keys: ${Object.keys(translations.en || {}).length}<br>
+                Vietnamese keys: ${Object.keys(translations.vi || {}).length}
+            `;
+            
+            // Test some translations
+            const testKey = 'nav_home';
+            if (i18n.getTranslation(testKey)) {
+                statusDiv.innerHTML += `<br><span class="success">✓ Translation test passed: "${testKey}" = "${i18n.getTranslation(testKey)}"</span>`;
+            } else {
+                statusDiv.innerHTML += `<br><span class="error">✗ Translation test failed</span>`;
+            }
+            
+            // Check for errors
+            if (errors.length > 0) {
+                consoleDiv.innerHTML = '<span class="error">Errors found:</span><br>' + 
+                    errors.map(e => `• ${e}`).join('<br>');
+            } else {
+                consoleDiv.innerHTML = '<span class="success">✓ No console errors detected</span>';
+            }
+        }
+        
+        // Test language switching
+        function testLanguage(lang) {
+            if (window.i18n) {
+                console.log('Switching language to:', lang);
+                window.i18n.setLanguage(lang);
+                setTimeout(checkI18nSystem, 100);
+            } else {
+                alert('i18n system not loaded');
+            }
+        }
+        
+        // Add click handlers
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.getAttribute('data-lang');
+                testLanguage(lang);
+            });
+        });
+    </script>
+</body>
+</html>
