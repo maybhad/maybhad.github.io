@@ -143,6 +143,8 @@ const translations = {
         knitwear_collection_desc: "Soft fleece, hoodies, and knit apparel for all seasons",
         main_products_title: "Main Product Lines",
         main_products_desc: "Comprehensive catalog featuring our flagship products and designs",
+        featured_products_title: "Featured Collections",
+        featured_products_desc: "Showcase of our latest designs and trending collections",
         
         // Certificates Section
         certificates_title: "Certificates & Awards",
@@ -459,6 +461,8 @@ const translations = {
         knitwear_collection_desc: "Fleece mềm mại, hoodie và đồ len cho mọi mùa",
         main_products_title: "Dòng sản phẩm chính",
         main_products_desc: "Danh mục đầy đủ sản phẩm chủ lực và thiết kế đặc trưng",
+        featured_products_title: "Bộ sưu tập Nổi bật",
+        featured_products_desc: "Giới thiệu những thiết kế mới nhất và bộ sưu tập đang được yêu thích",
         
         // Certificates Section
         certificates_title: "Chứng nhận & Giải thưởng",
